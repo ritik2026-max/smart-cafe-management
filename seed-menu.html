@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Seed Menu | The Sky House Cafe
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff7ed,
+                    #ffffff
+                );
+
+            color: #222;
+
+            min-height: 100vh;
+
+        }
+
+
+        .container {
+
+            width: 95%;
+
+            max-width: 900px;
+
+            margin: 40px auto;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(0,0,0,0.12);
+
+        }
+
+
+        h1 {
+
+            text-align: center;
+
+            margin:
+                0 0 8px;
+
+            color: #ff6b00;
+
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .warning {
+
+            background: #fff3cd;
+
+            color: #856404;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.6;
+
+        }
+
+
+        .status {
+
+            padding: 15px;
+
+            background: #f5f5f5;
+
+            border-radius: 10px;
+
+            margin:
+                15px 0;
+
+            min-height: 50px;
+
+        }
+
+
+        button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #ff6b00;
+
+            color: white;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        button:hover {
+
+            background: #e85d00;
+
+        }
+
+
+        button:disabled {
+
+            background: #aaa;
+
+            cursor: not-allowed;
+
+        }
+
+
+        .progress {
+
+            margin-top: 20px;
+
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 15px;
+
+            background: #eee;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+        }
+
+
+        #progressFill {
+
+            width: 0%;
+
+            height: 100%;
+
+            background: #ff6b00;
+
+            transition: width 0.3s ease;
+
+        }
+
+
+        #result {
+
+            margin-top: 20px;
+
+        }
+
+
+        .success {
+
+            background: #d4edda;
+
+            color: #155724;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .error {
+
+            background: #f8d7da;
+
+            color: #721c24;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .info {
+
+            background: #d1ecf1;
+
+            color: #0c5460;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap: 15px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .stat {
+
+            background: #fafafa;
+
+            border:
+                1px solid #eee;
+
+            padding: 20px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+        }
+
+
+        .stat strong {
+
+            display: block;
+
+            font-size: 28px;
+
+            color: #ff6b00;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .container {
+
+                margin: 20px auto;
+
+                padding: 20px;
+
+            }
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+    <h1>
+        ☕ The Sky House Cafe
+    </h1>
+
+    <div class="subtitle">
+        Firebase Menu Seeder
+    </div>
+
+
+    <div class="warning">
+
+        ⚠️ <strong>Important:</strong><br>
+
+        पहले Admin Panel में login करें।
+
+        फिर इस page को खोलकर नीचे
+        <strong>Seed Menu to Firebase</strong>
+        button दबाएँ।
+
+        यह existing menu items के नाम देखकर
+        duplicate बनाने से बचने की कोशिश करेगा।
+
+    </div>
+
+
+    <div
+        id="status"
+        class="status"
+    >
+        Checking Firebase connection...
+    </div>
+
+
+    <button
+        id="seedBtn"
+        disabled
+    >
+        🍽️ Seed Menu to Firebase
+    </button>
+
+
+    <div class="progress">
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="result"
+    ></div>
+
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong id="totalItems">
+                0
+            </strong>
+
+            Menu Items
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong id="addedItems">
+                0
+            </strong>
+
+            Added
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong id="updatedItems">
+                0
+            </strong>
+
+            Updated
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    type="module"
+    src="./js/seed-menu.js"
+></script>
+
+
+</body>
+
+</html>

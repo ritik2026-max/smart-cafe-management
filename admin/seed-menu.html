@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Seed Menu - Sky House Cafe</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .box {
+            width: 430px;
+            max-width: 92%;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,.12);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ff6b00;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e85d00;
+        }
+
+        button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h1>🍽️ Sky House Cafe</h1>
+
+    <p>Firebase Menu Seeder</p>
+
+    <p>
+        Login as Admin before running the seeder.
+    </p>
+
+    <button id="seedButton">
+        🌱 Add / Update 83 Menu Items
+    </button>
+
+    <div id="status">
+        Ready...
+    </div>
+
+</div>
+
+<script type="module">
+
+    import { seedMenu } from "../js/seed-menu.js";
+
+    const button = document.getElementById("seedButton");
+    const status = document.getElementById("status");
+
+    button.addEventListener("click", async () => {
+
+        button.disabled = true;
+
+        status.textContent = "⏳ Adding menu items to Firebase...";
+
+        try {
+
+            const result = await seedMenu();
+
+            status.innerHTML =
+                `✅ Menu completed!<br>
+                 Added: ${result.added}<br>
+                 Updated: ${result.updated}`;
+
+        } catch (error) {
+
+            console.error("❌ SEED ERROR:", error);
+
+            status.innerHTML =
+                `❌ Error:<br>${error.message}`;
+
+        } finally {
+
+            button.disabled = false;
+
+        }
+
+    });
+
+</script>
+
+</body>
+</html>

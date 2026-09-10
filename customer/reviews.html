@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Reviews | The Sky House Cafe</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/customer.css"
+    >
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <img
+        src="../image/logo.png"
+        class="logo"
+        alt="The Sky House Cafe"
+    >
+
+    <h1>⭐ Share Your Experience</h1>
+
+    <p>
+        The Sky House Cafe & Restaurant
+    </p>
+
+</header>
+
+
+<div class="customer-form">
+
+    <h2>⭐ Leave a Review</h2>
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Your Name"
+    >
+
+    <input
+        type="tel"
+        id="mobile"
+        placeholder="Mobile Number (Optional)"
+        maxlength="10"
+    >
+
+    <select id="rating">
+
+        <option value="">
+            Select Rating
+        </option>
+
+        <option value="5">
+            ⭐⭐⭐⭐⭐ Excellent
+        </option>
+
+        <option value="4">
+            ⭐⭐⭐⭐ Very Good
+        </option>
+
+        <option value="3">
+            ⭐⭐⭐ Good
+        </option>
+
+        <option value="2">
+            ⭐⭐ Average
+        </option>
+
+        <option value="1">
+            ⭐ Poor
+        </option>
+
+    </select>
+
+
+    <textarea
+        id="review"
+        placeholder="Write your review..."
+        rows="5"
+    ></textarea>
+
+
+    <button
+        id="reviewBtn"
+        class="checkout-btn"
+    >
+        ⭐ Submit Review
+    </button>
+
+</div>
+
+
+<script
+    type="module"
+    src="../js/reviews.js"
+></script>
+
+</body>
+
+</html>

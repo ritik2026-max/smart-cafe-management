@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Menu Management | Sky House Cafe</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+<body>
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<div class="sidebar">
+
+    <h2>☕ Sky House</h2>
+
+    <ul>
+
+        <li
+            onclick="location.href='dashboard.html'"
+        >
+            🏠 Dashboard
+        </li>
+
+
+        <li
+            style="
+                background:#ff6b00;
+                border-radius:8px;
+            "
+        >
+            🍽 Menu
+        </li>
+
+
+        <li
+            onclick="location.href='orders.html'"
+        >
+            🛒 Orders
+        </li>
+
+
+        <li>
+            📅 Reservations
+        </li>
+
+
+        <li>
+            ⭐ Reviews
+        </li>
+
+
+        <li>
+            ⚙ Settings
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<div class="main">
+
+
+    <h1>
+        🍽 Menu Management
+    </h1>
+
+
+
+    <!-- =====================================
+         ADD / EDIT ITEM
+    ====================================== -->
+
+    <div class="card">
+
+        <h2>
+            Add New Menu Item
+        </h2>
+
+
+        <!-- ITEM NAME -->
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Food Item Name"
+            autocomplete="off"
+        >
+
+
+        <!-- PRICE -->
+
+        <input
+            type="number"
+            id="price"
+            placeholder="Price ₹"
+            min="1"
+        >
+
+
+        <!-- CATEGORY -->
+
+        <select id="category">
+
+            <option value="">
+                Select Category
+            </option>
+
+            <option value="Starter">
+                Starter
+            </option>
+
+            <option value="Tandoor Starter">
+                Tandoor Starter
+            </option>
+
+            <option value="Pizza">
+                Pizza
+            </option>
+
+            <option value="Pasta">
+                Pasta
+            </option>
+
+            <option value="Momos">
+                Momos
+            </option>
+
+            <option value="Chinese">
+                Chinese
+            </option>
+
+            <option value="Rice">
+                Rice
+            </option>
+
+            <option value="North Indian">
+                North Indian
+            </option>
+
+            <option value="South Indian">
+                South Indian
+            </option>
+
+            <option value="Main Course">
+                Main Course
+            </option>
+
+            <option value="Beverages">
+                Beverages
+            </option>
+
+        </select>
+
+
+        <!-- IMAGE -->
+
+        <input
+            type="text"
+            id="image"
+            placeholder="Image Path e.g. /image/food/paneer-tikka.jpg"
+            autocomplete="off"
+        >
+
+
+        <!-- BUTTONS -->
+
+        <div
+            style="
+                display:flex;
+                gap:10px;
+                margin-top:10px;
+                flex-wrap:wrap;
+            "
+        >
+
+            <button
+                id="saveBtn"
+                onclick="saveItem()"
+            >
+                ➕ Add Item
+            </button>
+
+
+            <button
+                type="button"
+                onclick="clearForm()"
+            >
+                Clear
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         SEARCH
+    ====================================== -->
+
+    <div
+        class="card"
+        style="margin-top:20px;"
+    >
+
+        <h2>
+            🔍 Search Menu
+        </h2>
+
+
+        <input
+            type="text"
+            id="searchMenu"
+            placeholder="Search food or category..."
+            oninput="searchMenu()"
+            autocomplete="off"
+        >
+
+    </div>
+
+
+
+    <!-- =====================================
+         MENU ITEMS
+    ====================================== -->
+
+    <h2 style="margin-top:30px;">
+
+        📋 Menu Items
+
+    </h2>
+
+
+
+    <div
+        style="
+            overflow-x:auto;
+            margin-top:15px;
+        "
+    >
+
+        <table id="menuTable">
+
+            <tr>
+
+                <th>
+                    Image
+                </th>
+
+                <th>
+                    Item
+                </th>
+
+                <th>
+                    Category
+                </th>
+
+                <th>
+                    Price
+                </th>
+
+                <th>
+                    Action
+                </th>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script
+    type="module"
+    src="../js/admin-menu.js"
+></script>
+
+
+</body>
+
+</html>

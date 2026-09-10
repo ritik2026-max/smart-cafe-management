@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Login | Sky House Cafe</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <div class="login-logo">
+            ☕
+        </div>
+
+        <h1>
+            Sky House Cafe
+        </h1>
+
+        <p>
+            Admin Panel
+        </p>
+
+
+        <!-- EMAIL -->
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter Admin Email"
+            autocomplete="email"
+        >
+
+
+        <!-- PASSWORD -->
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter Password"
+            autocomplete="current-password"
+        >
+
+
+        <!-- LOGIN -->
+
+        <button
+            id="loginBtn"
+            type="button"
+        >
+            🔐 Login
+        </button>
+
+
+        <!-- FORGOT PASSWORD -->
+
+        <button
+            id="forgotPasswordBtn"
+            type="button"
+            style="
+                margin-top:12px;
+                background:none;
+                border:none;
+                color:#ff6b00;
+                cursor:pointer;
+                font-size:14px;
+            "
+        >
+            Forgot Password?
+        </button>
+
+
+        <!-- MESSAGE -->
+
+        <p
+            id="message"
+            style="
+                margin-top:12px;
+                font-size:14px;
+            "
+        ></p>
+
+
+        <!-- OLD ERROR ELEMENT -->
+
+        <p
+            id="error"
+            class="login-error"
+        ></p>
+
+    </div>
+
+</div>
+
+
+<script
+    type="module"
+    src="../js/login.js"
+></script>
+
+
+</body>
+
+</html>

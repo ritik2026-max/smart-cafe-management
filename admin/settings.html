@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | Sky House Cafe</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body>
+
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <h2>☕ Sky House</h2>
+
+    <ul>
+
+        <li onclick="location.href='dashboard.html'">
+            <i class="fas fa-home"></i>
+            Dashboard
+        </li>
+
+        <li onclick="location.href='menu.html'">
+            <i class="fas fa-utensils"></i>
+            Menu
+        </li>
+
+        <li onclick="location.href='orders.html'">
+            <i class="fas fa-shopping-cart"></i>
+            Orders
+        </li>
+
+        <li onclick="location.href='booking.html'">
+            <i class="fas fa-calendar"></i>
+            Booking
+        </li>
+
+        <li onclick="location.href='reviews.html'">
+            <i class="fas fa-star"></i>
+            Reviews
+        </li>
+
+        <li class="active">
+            <i class="fas fa-cog"></i>
+            Settings
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div
+        style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:15px;
+        "
+    >
+
+        <div>
+
+            <h1>⚙️ Cafe Settings</h1>
+
+            <p>
+                Manage your cafe information
+            </p>
+
+        </div>
+
+
+        <button
+            onclick="logout()"
+            class="logout-btn"
+        >
+
+            <i class="fas fa-sign-out-alt"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+
+    <!-- SETTINGS FORM -->
+
+    <div
+        class="customer-form"
+        style="
+            max-width:700px;
+            margin-top:30px;
+        "
+    >
+
+        <h2>🏪 Cafe Information</h2>
+
+
+        <label>Cafe Name</label>
+
+        <input
+            type="text"
+            id="cafeName"
+            placeholder="The Sky House Cafe & Restaurant"
+        >
+
+
+        <label>Tagline</label>
+
+        <input
+            type="text"
+            id="tagline"
+            placeholder="Good Food • Good Mood • Good Times"
+        >
+
+
+        <label>Mobile Number</label>
+
+        <input
+            type="tel"
+            id="mobile"
+            maxlength="10"
+            placeholder="Enter cafe mobile number"
+        >
+
+
+        <label>WhatsApp Number</label>
+
+        <input
+            type="tel"
+            id="whatsapp"
+            placeholder="WhatsApp number with country code"
+        >
+
+
+        <label>Address</label>
+
+        <textarea
+            id="address"
+            rows="4"
+            placeholder="Enter cafe address"
+        ></textarea>
+
+
+        <label>Opening Time</label>
+
+        <input
+            type="time"
+            id="openingTime"
+        >
+
+
+        <label>Closing Time</label>
+
+        <input
+            type="time"
+            id="closingTime"
+        >
+
+
+        <label>Instagram</label>
+
+        <input
+            type="text"
+            id="instagram"
+            placeholder="@cafeskyhouse"
+        >
+
+
+        <label>Website</label>
+
+        <input
+            type="text"
+            id="website"
+            placeholder="https://..."
+        >
+
+
+        <button
+            id="saveSettings"
+            class="checkout-btn"
+        >
+
+            💾 Save Settings
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script
+    type="module"
+    src="../js/settings.js"
+></script>
+
+</body>
+
+<script
+    type="module"
+    src="../js/admin-auth.js"
+></script>
+
+</html>

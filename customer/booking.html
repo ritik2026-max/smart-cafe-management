@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Table Booking | The Sky House Cafe</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/customer.css"
+    >
+
+</head>
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+    <img
+        src="../image/logo.png"
+        class="logo"
+        alt="The Sky House Cafe"
+    >
+
+    <h1>
+        🪑 Table Booking
+    </h1>
+
+    <p>
+        The Sky House Cafe & Restaurant
+    </p>
+
+</header>
+
+
+
+<!-- =========================================
+     BOOKING FORM
+========================================= -->
+
+<div class="customer-form">
+
+    <h2>
+        📅 Reserve Your Table
+    </h2>
+
+
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Your Name"
+    >
+
+
+    <input
+        type="tel"
+        id="mobile"
+        placeholder="Mobile Number"
+        maxlength="10"
+    >
+
+
+    <input
+        type="date"
+        id="bookingDate"
+    >
+
+
+    <input
+        type="time"
+        id="bookingTime"
+    >
+
+
+    <input
+        type="number"
+        id="guests"
+        placeholder="Number of Guests"
+        min="1"
+        max="30"
+    >
+
+
+    <select id="occasion">
+
+        <option value="">
+            Select Occasion
+        </option>
+
+        <option value="Birthday">
+            🎂 Birthday
+        </option>
+
+        <option value="Anniversary">
+            💕 Anniversary
+        </option>
+
+        <option value="Kitty Party">
+            🎉 Kitty Party
+        </option>
+
+        <option value="Family Dinner">
+            👨‍👩‍👧 Family Dinner
+        </option>
+
+        <option value="Date">
+            ❤️ Date
+        </option>
+
+        <option value="Other">
+            Other
+        </option>
+
+    </select>
+
+
+    <textarea
+        id="specialRequest"
+        placeholder="Special Request (Optional)"
+    ></textarea>
+
+
+    <button
+        id="bookingBtn"
+        class="checkout-btn"
+    >
+        📅 Book My Table
+    </button>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="../js/booking.js"
+></script>
+
+
+</body>
+
+</html>

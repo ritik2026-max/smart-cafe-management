@@ -1,0 +1,509 @@
+/* =====================================================
+   SKY HOUSE CAFE
+   CUSTOMER MENU - FINAL CSS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+    width: 100%;
+    background: linear-gradient(135deg, #ff6500, #ff9800);
+    color: white;
+    text-align: center;
+    padding: 20px 15px;
+}
+
+.header .logo {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-top: 8px;
+}
+
+.header p {
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 18px 20px 8px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchInput {
+    width: 100%;
+    max-width: 500px;
+    height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+    padding: 0 15px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+}
+
+#searchInput:focus {
+    border-color: #ff6b00;
+}
+
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
+
+.categories,
+.category-buttons {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 15px 18px;
+
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.categories button,
+.category-buttons button {
+
+    border: none;
+
+    background: #ff6b00;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition: 0.2s;
+}
+
+.categories button:hover,
+.category-buttons button:hover {
+    background: #e85d00;
+    transform: translateY(-1px);
+}
+
+.categories button.active,
+.category-buttons button.active {
+    background: #222;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.menu-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+
+/* =====================================================
+   MENU GRID
+===================================================== */
+
+.menu-grid {
+
+    width: 100%;
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+/* =====================================================
+   🔥 IMPORTANT
+   YOUR JAVASCRIPT USES .food-card
+===================================================== */
+
+.food-card {
+
+    width: 100%;
+
+    min-width: 0;
+
+    background: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.10);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: 0.2s;
+}
+
+.food-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   🔥 FOOD IMAGE
+===================================================== */
+
+.food-card > img {
+
+    width: 100% !important;
+
+    height: 190px !important;
+
+    min-height: 190px !important;
+
+    max-height: 190px !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    object-position: center !important;
+
+    background: #eee;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+}
+
+
+/* =====================================================
+   FOOD INFORMATION
+===================================================== */
+
+.food-info {
+
+    width: 100%;
+
+    padding: 13px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.food-info h3 {
+
+    font-size: 16px;
+
+    line-height: 1.3;
+
+    margin-bottom: 5px;
+
+    color: #222;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.food-info .category {
+
+    font-size: 11px;
+
+    color: #777;
+
+    margin-bottom: 7px;
+
+    padding: 0;
+
+    background: transparent;
+
+    display: block;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.food-info .price {
+
+    color: #ff6500;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+.food-info .add-btn {
+
+    width: 100%;
+
+    margin-top: auto;
+
+    border: none;
+
+    background: #ff6500;
+
+    color: white;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.food-info .add-btn:hover {
+
+    background: #e85d00;
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+.message {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    color: #777;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   FLOATING CART
+===================================================== */
+
+.floating-cart {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    width: min(500px, 92%);
+
+    background: #ff6500;
+
+    color: white;
+
+    padding: 12px 16px;
+
+    border-radius: 12px;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1050px) {
+
+    .menu-grid {
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+    .food-card > img {
+
+        height: 180px !important;
+
+        min-height: 180px !important;
+
+        max-height: 180px !important;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .header .logo {
+        width: 65px;
+        height: 65px;
+    }
+
+    .categories,
+    .category-buttons {
+
+        justify-content: flex-start;
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+    .menu-grid {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        padding: 12px;
+    }
+
+    .food-card > img {
+
+        height: 150px !important;
+
+        min-height: 150px !important;
+
+        max-height: 150px !important;
+    }
+
+    .food-info {
+
+        padding: 10px;
+    }
+
+    .food-info h3 {
+
+        font-size: 14px;
+    }
+
+    .food-info .price {
+
+        font-size: 15px;
+    }
+
+    .food-info .add-btn {
+
+        padding: 9px;
+
+        font-size: 11px;
+    }
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 430px) {
+
+    .menu-grid {
+
+        grid-template-columns: 1fr;
+
+        padding: 12px;
+    }
+
+    .food-card > img {
+
+        height: 210px !important;
+
+        min-height: 210px !important;
+
+        max-height: 210px !important;
+    }
+
+    .food-info h3 {
+
+        font-size: 17px;
+    }
+}
