@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sky House Cafe & Restaurant</title>
+<meta name="description" content="The Sky House Cafe & Restaurant - Pure Veg Rooftop Cafe and Digital QR Menu">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#fffaf5;color:#222;line-height:1.6}
+a{text-decoration:none}
+.header{position:sticky;top:0;z-index:100;background:#171717;color:#fff;box-shadow:0 2px 12px #0003}
+.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:25px}
+.logo{font-size:22px;color:#f6a623;letter-spacing:1px;margin-right:auto}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:#fff}
+.nav-links a:hover{color:#f6a623}
+.nav-btn,.btn{display:inline-block;padding:11px 20px;border-radius:25px;font-weight:bold}
+.nav-btn,.btn-primary{background:#f6a623;color:#171717}
+.hero{min-height:72vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 20px;background:linear-gradient(#0008,#0008),url("image/food/pizza.jpeg") center/cover}
+.hero-content{max-width:800px;color:#fff}
+.tagline{display:inline-block;background:#f6a623;color:#171717;padding:7px 15px;border-radius:20px;font-weight:bold;margin-bottom:18px}
+.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;margin-bottom:18px}
+.hero p{font-size:18px;margin-bottom:25px}
+.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-outline{border:2px solid #fff;color:#fff}
+.hero-info{margin-top:22px;font-weight:bold}
+section{padding:65px 20px}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title h2{font-size:34px}
+.section-title p{color:#777}
+.grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 22px #00000012}
+.card img{width:100%;height:210px;object-fit:cover;display:block}
+.card-body{padding:20px}
+.card-body h3{margin-bottom:7px}
+.card-body p{color:#666}
+.menu-section{background:#f5eee6}
+.menu-box{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.menu-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 5px 18px #00000012;text-align:center}
+.menu-card img{width:100%;height:160px;object-fit:cover}
+.menu-card h3{padding:13px 8px 5px}
+.menu-card a{display:inline-block;margin:0 0 16px;color:#d47b00;font-weight:bold}
+.why{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why-card{text-align:center;padding:25px;background:#fff;border-radius:16px;box-shadow:0 5px 18px #00000010}
+.why-card span{font-size:35px}
+.book{background:#171717;color:#fff;text-align:center}
+.book p{max-width:650px;margin:12px auto 22px;color:#ddd}
+.book-btn{display:inline-block;background:#25d366;color:#fff;padding:13px 24px;border-radius:25px;font-weight:bold}
+.footer{background:#111;color:#ddd;padding:45px 20px 20px}
+.footer-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.footer h3{color:#f6a623;margin-bottom:10px}
+.footer p{color:#bbb}
+.copyright{text-align:center;border-top:1px solid #333;margin-top:30px;padding-top:18px;color:#888}
+@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.menu-box{grid-template-columns:1fr 1fr}.why{grid-template-columns:1fr 1fr}.nav-links{display:none}}
+@media(max-width:550px){.grid,.menu-box,.why,.footer-grid{grid-template-columns:1fr}.hero{min-height:78vh}.hero h1{font-size:42px}}
+</style>
+</head>
+
+<body>
+<header class="header">
+  <nav class="nav">
+    <div class="logo">☕ THE SKY HOUSE</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#popular">Popular</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="customer/menu.html" class="nav-btn">View Digital Menu</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="tagline">Rooftop Cafe • Family Restaurant</span>
+    <h1>Welcome to<br>The Sky House Cafe & Restaurant</h1>
+    <p>Experience delicious pure-veg food, beautiful rooftop ambience, and unforgettable moments with your friends and family.</p>
+    <div class="hero-buttons">
+      <a href="customer/menu.html" class="btn btn-primary">🍽️ Explore Digital Menu</a>
+      <a href="#contact" class="btn btn-outline">📞 Contact Us</a>
+    </div>
+    <div class="hero-info">⭐ Pure Veg &nbsp; | &nbsp; 🌇 Rooftop Dining &nbsp; | &nbsp; 🎉 Party Friendly</div>
+  </div>
+</section>
+
+<section id="popular">
+  <div class="section-title">
+    <h2>Our Popular Dishes</h2>
+    <p>Fresh • Pure Veg • Delicious</p>
+  </div>
+  <div class="grid">
+    <div class="card"><img src="image/food/pizza.jpeg" alt="Pizza"><div class="card-body"><h3>Pizza</h3><p>Freshly prepared with delicious toppings and cheese.</p></div></div>
+    <div class="card"><img src="image/food/paneer-pizza.jpeg" alt="Paneer Pizza"><div class="card-body"><h3>Paneer Pizza</h3><p>Loaded with paneer, cheese and flavourful toppings.</p></div></div>
+    <div class="card"><img src="image/food/pasta.jpeg" alt="Pasta"><div class="card-body"><h3>White Sauce Pasta</h3><p>Creamy, comforting pasta prepared fresh.</p></div></div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-title">
+    <h2>Digital QR Menu</h2>
+    <p>Scan • Choose • Order</p>
+  </div>
+  <div class="menu-box">
+    <div class="menu-card"><img src="image/food/pizza.jpeg" alt="Pizza"><h3>Pizza</h3><a href="customer/menu.html">View Menu →</a></div>
+    <div class="menu-card"><img src="image/food/pasta.jpeg" alt="Pasta"><h3>Pasta</h3><a href="customer/menu.html">View Menu →</a></div>
+    <div class="menu-card"><img src="image/food/momos.jpeg" alt="Momos"><h3>Momos</h3><a href="customer/menu.html">View Menu →</a></div>
+    <div class="menu-card"><img src="image/food/briyani.jpeg" alt="Biryani"><h3>Main Course</h3><a href="customer/menu.html">View Menu →</a></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title"><h2>Why Choose Sky House?</h2></div>
+  <div class="why">
+    <div class="why-card"><span>🌅</span><h3>Rooftop Ambience</h3><p>Enjoy delicious food with a beautiful rooftop view.</p></div>
+    <div class="why-card"><span>🥗</span><h3>100% Pure Veg</h3><p>Fresh vegetarian dishes prepared with care.</p></div>
+    <div class="why-card"><span>🎉</span><h3>Celebrations</h3><p>Perfect for birthdays, family dinners and parties.</p></div>
+    <div class="why-card"><span>📱</span><h3>QR Ordering</h3><p>Browse the digital menu and order conveniently.</p></div>
+  </div>
+</section>
+
+<section class="book">
+  <h2>Reserve Your Table</h2>
+  <p>Planning a birthday, family dinner or kitty party? Contact Sky House and reserve your table.</p>
+  <a class="book-btn" href="https://wa.me/919907228498?text=Hello%20Sky%20House%20Cafe%2C%20I%20would%20like%20to%20book%20a%20table." target="_blank" rel="noopener">📲 Book on WhatsApp</a>
+</section>
+
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div><h3>The Sky House</h3><p>Rooftop Cafe & Family Restaurant serving delicious vegetarian food with an unforgettable dining experience.</p></div>
+    <div><h3>Quick Links</h3><p><a href="#home" style="color:#bbb">Home</a><br><a href="customer/menu.html" style="color:#bbb">Digital Menu</a><br><a href="admin/login.html" style="color:#bbb">Admin Login</a></p></div>
+    <div><h3>Contact</h3><p>📍 Kothi Bazar, Above Croma, 4th Floor<br>📞 +91 99072 28498<br>⏰ 11:00 AM – 11:00 PM</p></div>
+  </div>
+  <p class="copyright">© 2026 The Sky House Cafe & Restaurant. All Rights Reserved.</p>
+</footer>
+</body>
+</html>
