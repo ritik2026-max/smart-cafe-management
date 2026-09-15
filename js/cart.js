@@ -9,33 +9,30 @@ import {
 
 
 // =========================================
+// WHATSAPP NUMBER
+// =========================================
+
+const WHATSAPP_NUMBER = "919685989854";
+
+
+// =========================================
 // ELEMENTS
 // =========================================
 
 const cartItems =
-    document.getElementById(
-        "cartItems"
-    );
+    document.getElementById("cartItems");
 
 const cartTotal =
-    document.getElementById(
-        "cartTotal"
-    );
+    document.getElementById("cartTotal");
 
 const totalItems =
-    document.getElementById(
-        "totalItems"
-    );
+    document.getElementById("totalItems");
 
 const placeOrderBtn =
-    document.getElementById(
-        "placeOrderBtn"
-    );
+    document.getElementById("placeOrderBtn");
 
 const orderMessage =
-    document.getElementById(
-        "orderMessage"
-    );
+    document.getElementById("orderMessage");
 
 
 // =========================================
@@ -44,9 +41,7 @@ const orderMessage =
 
 let cart =
     JSON.parse(
-        localStorage.getItem(
-            "cart"
-        )
+        localStorage.getItem("cart")
     ) || [];
 
 
@@ -58,10 +53,7 @@ function displayCart() {
 
     cartItems.innerHTML = "";
 
-
-    if (
-        cart.length === 0
-    ) {
+    if (cart.length === 0) {
 
         cartItems.innerHTML = `
 
@@ -76,9 +68,7 @@ function displayCart() {
                 </p>
 
                 <button
-                    onclick="
-                        location.href='menu.html'
-                    "
+                    onclick="location.href='menu.html'"
                 >
                     Browse Menu
                 </button>
@@ -87,197 +77,147 @@ function displayCart() {
 
         `;
 
-
-        updateSummary(
-            0,
-            0
-        );
-
+        updateSummary(0, 0);
 
         return;
-
     }
 
 
     let total = 0;
-
     let itemCount = 0;
 
 
-    cart.forEach(
-        (
-            item,
-            index
-        ) => {
+    cart.forEach((item, index) => {
 
-            const price =
-                Number(
-                    item.price || 0
-                );
+        const price =
+            Number(item.price || 0);
 
-            const quantity =
-                Number(
-                    item.quantity || 1
-                );
+        const quantity =
+            Number(item.quantity || 1);
 
-            const itemTotal =
-                price * quantity;
+        const itemTotal =
+            price * quantity;
 
 
-            total +=
-                itemTotal;
+        total += itemTotal;
+        itemCount += quantity;
 
 
-            itemCount +=
-                quantity;
+        const row =
+            document.createElement("div");
+
+        row.className = "cart-item";
 
 
-            const row =
-                document.createElement(
-                    "div"
-                );
+        row.innerHTML = `
 
+            <img
+                src="${escapeHTML(
+                    item.image ||
+                    "../image/logo.png"
+                )}"
+                alt="${escapeHTML(
+                    item.name ||
+                    "Food"
+                )}"
+            >
 
-            row.className =
-                "cart-item";
+            <div class="item-info">
 
-
-            row.innerHTML = `
-
-                <img
-                    src="${escapeHTML(
-                        item.image ||
-                        "../image/logo.png"
-                    )}"
-                    alt="${escapeHTML(
+                <h3>
+                    ${escapeHTML(
                         item.name ||
-                        "Food"
-                    )}"
-                >
-
-                <div class="item-info">
-
-                    <h3>
-                        ${escapeHTML(
-                            item.name ||
-                            "Item"
-                        )}
-                    </h3>
-
-                    <div class="item-price">
-
-                        ₹${price.toLocaleString(
-                            "en-IN"
-                        )}
-
-                    </div>
-
-                </div>
-
-
-                <div class="quantity">
-
-                    <button
-                        data-action="minus"
-                    >
-                        −
-                    </button>
-
-                    <span>
-                        ${quantity}
-                    </span>
-
-                    <button
-                        data-action="plus"
-                    >
-                        +
-                    </button>
-
-                </div>
-
-
-                <strong>
-
-                    ₹${itemTotal.toLocaleString(
-                        "en-IN"
+                        "Item"
                     )}
+                </h3>
 
-                </strong>
+                <div class="item-price">
 
+                    ₹${price.toLocaleString("en-IN")}
+
+                </div>
+
+            </div>
+
+
+            <div class="quantity">
 
                 <button
-                    class="remove-btn"
-                    data-action="remove"
+                    data-action="minus"
                 >
-                    🗑️
+                    −
                 </button>
 
-            `;
+                <span>
+                    ${quantity}
+                </span>
+
+                <button
+                    data-action="plus"
+                >
+                    +
+                </button>
+
+            </div>
 
 
-            const image =
-                row.querySelector(
-                    "img"
-                );
+            <strong>
+
+                ₹${itemTotal.toLocaleString("en-IN")}
+
+            </strong>
 
 
-            image.onerror =
-                function() {
+            <button
+                class="remove-btn"
+                data-action="remove"
+            >
+                🗑️
+            </button>
 
-                    this.src =
-                        "../image/logo.png";
-
-                };
-
-
-            row.querySelector(
-                '[data-action="minus"]'
-            ).addEventListener(
-                "click",
-                () => {
-
-                    decreaseQuantity(
-                        index
-                    );
-
-                }
-            );
+        `;
 
 
-            row.querySelector(
-                '[data-action="plus"]'
-            ).addEventListener(
-                "click",
-                () => {
-
-                    increaseQuantity(
-                        index
-                    );
-
-                }
-            );
+        const image =
+            row.querySelector("img");
 
 
-            row.querySelector(
-                '[data-action="remove"]'
-            ).addEventListener(
-                "click",
-                () => {
+        image.onerror =
+            function () {
 
-                    removeItem(
-                        index
-                    );
+                this.src =
+                    "../image/logo.png";
 
-                }
-            );
+            };
 
 
-            cartItems.appendChild(
-                row
-            );
+        row.querySelector(
+            '[data-action="minus"]'
+        ).addEventListener(
+            "click",
+            () => decreaseQuantity(index)
+        );
 
-        }
-    );
+
+        row.querySelector(
+            '[data-action="plus"]'
+        ).addEventListener(
+            "click",
+            () => increaseQuantity(index)
+        );
+
+
+        row.querySelector(
+            '[data-action="remove"]'
+        ).addEventListener(
+            "click",
+            () => removeItem(index)
+        );
+
+
+        cartItems.appendChild(row);
+
+    });
 
 
     updateSummary(
@@ -292,39 +232,28 @@ function displayCart() {
 // SUMMARY
 // =========================================
 
-function updateSummary(
-    total,
-    count
-) {
+function updateSummary(total, count) {
 
     totalItems.innerText =
         count;
 
-
     cartTotal.innerText =
         "₹" +
-        Number(
-            total
-        ).toLocaleString(
-            "en-IN"
-        );
+        Number(total).toLocaleString("en-IN");
 
 }
 
 
 // =========================================
-// PLUS
+// INCREASE QUANTITY
 // =========================================
 
-function increaseQuantity(
-    index
-) {
+function increaseQuantity(index) {
 
     cart[index].quantity =
         Number(
             cart[index].quantity || 1
         ) + 1;
-
 
     saveCart();
 
@@ -332,12 +261,10 @@ function increaseQuantity(
 
 
 // =========================================
-// MINUS
+// DECREASE QUANTITY
 // =========================================
 
-function decreaseQuantity(
-    index
-) {
+function decreaseQuantity(index) {
 
     const quantity =
         Number(
@@ -345,21 +272,14 @@ function decreaseQuantity(
         );
 
 
-    if (
-        quantity > 1
-    ) {
+    if (quantity > 1) {
 
         cart[index].quantity =
             quantity - 1;
 
-    }
+    } else {
 
-    else {
-
-        cart.splice(
-            index,
-            1
-        );
+        cart.splice(index, 1);
 
     }
 
@@ -370,18 +290,12 @@ function decreaseQuantity(
 
 
 // =========================================
-// REMOVE
+// REMOVE ITEM
 // =========================================
 
-function removeItem(
-    index
-) {
+function removeItem(index) {
 
-    cart.splice(
-        index,
-        1
-    );
-
+    cart.splice(index, 1);
 
     saveCart();
 
@@ -389,18 +303,15 @@ function removeItem(
 
 
 // =========================================
-// SAVE
+// SAVE CART
 // =========================================
 
 function saveCart() {
 
     localStorage.setItem(
         "cart",
-        JSON.stringify(
-            cart
-        )
+        JSON.stringify(cart)
     );
-
 
     displayCart();
 
@@ -415,9 +326,7 @@ placeOrderBtn.addEventListener(
     "click",
     async () => {
 
-        if (
-            cart.length === 0
-        ) {
+        if (cart.length === 0) {
 
             showMessage(
                 "❌ Cart is empty.",
@@ -431,25 +340,19 @@ placeOrderBtn.addEventListener(
 
         const customerName =
             document
-                .getElementById(
-                    "customerName"
-                )
+                .getElementById("customerName")
                 .value
                 .trim();
 
 
         const tableNo =
             document
-                .getElementById(
-                    "tableNo"
-                )
+                .getElementById("tableNo")
                 .value
                 .trim();
 
 
-        if (
-            customerName === ""
-        ) {
+        if (customerName === "") {
 
             showMessage(
                 "❌ Please enter customer name.",
@@ -461,9 +364,7 @@ placeOrderBtn.addEventListener(
         }
 
 
-        if (
-            tableNo === ""
-        ) {
+        if (tableNo === "") {
 
             showMessage(
                 "❌ Please enter table number.",
@@ -481,22 +382,12 @@ placeOrderBtn.addEventListener(
 
         const total =
             cart.reduce(
-                (
-                    sum,
-                    item
-                ) => {
+                (sum, item) => {
 
                     return (
                         sum +
-                        (
-                            Number(
-                                item.price || 0
-                            )
-                            *
-                            Number(
-                                item.quantity || 1
-                            )
-                        )
+                        Number(item.price || 0) *
+                        Number(item.quantity || 1)
                     );
 
                 },
@@ -505,12 +396,85 @@ placeOrderBtn.addEventListener(
 
 
         // =====================================
+        // WHATSAPP MESSAGE
+        // =====================================
+
+        let whatsappMessage =
+            `🍽️ *NEW ORDER - THE SKY HOUSE CAFE*%0A%0A`;
+
+        whatsappMessage +=
+            `👤 *Customer:* ${customerName}%0A`;
+
+        whatsappMessage +=
+            `🪑 *Table No:* ${tableNo}%0A%0A`;
+
+        whatsappMessage +=
+            `📋 *ORDER DETAILS*%0A`;
+
+
+        cart.forEach((item, index) => {
+
+            const price =
+                Number(item.price || 0);
+
+            const quantity =
+                Number(item.quantity || 1);
+
+            const itemTotal =
+                price * quantity;
+
+
+            whatsappMessage +=
+                `${index + 1}. ${item.name}%0A`;
+
+            whatsappMessage +=
+                `   Qty: ${quantity} × ₹${price} = ₹${itemTotal}%0A`;
+
+        });
+
+
+        whatsappMessage +=
+            `%0A💰 *TOTAL: ₹${total}*%0A%0A`;
+
+        whatsappMessage +=
+            `🏪 The Sky House Cafe & Restaurant`;
+
+
+        const whatsappURL =
+            `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+
+
+        // =====================================
+        // OPEN WHATSAPP WINDOW
+        // =====================================
+        // Browser popup blocker se bachne ke liye
+        // click ke time hi window open kar rahe hain.
+
+        let whatsappWindow = null;
+
+        try {
+
+            whatsappWindow =
+                window.open(
+                    "about:blank",
+                    "_blank"
+                );
+
+        } catch (error) {
+
+            console.log(
+                "WhatsApp window could not open:",
+                error
+            );
+
+        }
+
+
+        // =====================================
         // DISABLE BUTTON
         // =====================================
 
-        placeOrderBtn.disabled =
-            true;
-
+        placeOrderBtn.disabled = true;
 
         placeOrderBtn.innerText =
             "⏳ Placing Order...";
@@ -531,27 +495,25 @@ placeOrderBtn.addEventListener(
                     tableNo,
 
                 items:
-                    cart.map(
-                        item => ({
+                    cart.map(item => ({
 
-                            id:
-                                item.id || "",
+                        id:
+                            item.id || "",
 
-                            name:
-                                item.name || "Item",
+                        name:
+                            item.name || "Item",
 
-                            price:
-                                Number(
-                                    item.price || 0
-                                ),
+                        price:
+                            Number(
+                                item.price || 0
+                            ),
 
-                            quantity:
-                                Number(
-                                    item.quantity || 1
-                                )
+                        quantity:
+                            Number(
+                                item.quantity || 1
+                            )
 
-                        })
-                    ),
+                    })),
 
                 total:
                     total,
@@ -571,7 +533,7 @@ placeOrderBtn.addEventListener(
 
 
             // =================================
-            // SAVE FIRESTORE
+            // SAVE TO FIRESTORE
             // =================================
 
             const orderRef =
@@ -594,16 +556,16 @@ placeOrderBtn.addEventListener(
             // CLEAR CART
             // =================================
 
-            localStorage.removeItem(
-                "cart"
-            );
-
+            localStorage.removeItem("cart");
 
             cart = [];
 
-
             displayCart();
 
+
+            // =================================
+            // SUCCESS MESSAGE
+            // =================================
 
             showMessage(
                 "✅ Order placed successfully!"
@@ -615,7 +577,29 @@ placeOrderBtn.addEventListener(
 
 
             // =================================
-            // REDIRECT
+            // OPEN WHATSAPP
+            // =================================
+
+            if (
+                whatsappWindow &&
+                !whatsappWindow.closed
+            ) {
+
+                whatsappWindow.location.href =
+                    whatsappURL;
+
+            } else {
+
+                // Popup blocked होने पर fallback
+
+                window.location.href =
+                    whatsappURL;
+
+            }
+
+
+            // =================================
+            // REDIRECT TO MENU
             // =================================
 
             setTimeout(
@@ -625,7 +609,7 @@ placeOrderBtn.addEventListener(
                         "menu.html";
 
                 },
-                2000
+                5000
             );
 
 
@@ -637,6 +621,19 @@ placeOrderBtn.addEventListener(
                 "❌ Place Order Error:",
                 error
             );
+
+
+            // अगर Firebase order fail हो जाए
+            // तो blank WhatsApp tab बंद कर दें
+
+            if (
+                whatsappWindow &&
+                !whatsappWindow.closed
+            ) {
+
+                whatsappWindow.close();
+
+            }
 
 
             showMessage(
@@ -670,7 +667,6 @@ function showMessage(
     orderMessage.innerText =
         message;
 
-
     orderMessage.style.color =
         error
             ? "red"
@@ -683,9 +679,7 @@ function showMessage(
 // ESCAPE HTML
 // =========================================
 
-function escapeHTML(
-    value
-) {
+function escapeHTML(value) {
 
     return String(value)
 
