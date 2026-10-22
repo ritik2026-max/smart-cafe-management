@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sky House — Safe Image Audit Export</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:900px;margin:28px auto;padding:0 16px;color:#222}button{padding:12px 18px;border:0;border-radius:8px;background:#1769aa;color:white;font-size:16px;cursor:pointer}button:disabled{opacity:.6}#status{margin:16px 0;padding:12px;background:#f3f6f8;border-radius:8px}table{border-collapse:collapse;width:100%;margin-top:16px}th,td{padding:8px;border:1px solid #ddd;text-align:left;overflow-wrap:anywhere}th{background:#eee}.note{color:#555;line-height:1.5}
+</style>
+</head>
+<body>
+<h2>Sky House Cafe — Image Mapping Export</h2>
+<p class="note">यह पेज सिर्फ Firestore की <b>menu</b> collection को पढ़ता है। यह Firebase में कोई बदलाव नहीं करता। यह केवल item का नाम, category और image path export करेगा।</p>
+<button id="exportBtn">Read Menu & Download JSON</button>
+<div id="status">शुरू करने के लिए ऊपर बटन दबाएँ।</div>
+<div id="preview"></div>
+<script type="module">
+import { db } from './firebase/firebase.js';
+import { collection, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js';
+const btn=document.getElementById('exportBtn');
+const status=document.getElementById('status');
+const preview=document.getElementById('preview');
+btn.addEventListener('click', async()=>{
+ btn.disabled=true; status.textContent='Firestore से menu पढ़ रहे हैं…'; preview.innerHTML='';
+ try {
+  const snap=await getDocs(collection(db,'menu'));
+  const rows=snap.docs.map(d=>{const x=d.data();return {id:d.id,name:x.name??'',category:x.category??'',image:x.image??''};});
+  rows.sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  const blob=new Blob([JSON.stringify(rows,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='sky-house-menu-image-audit.json'; a.click(); URL.revokeObjectURL(url);
+  status.textContent=`सफलता: ${rows.length} menu items पढ़े गए। JSON फाइल डाउनलोड हो गई है। इसे ChatGPT में अपलोड करें।`;
+  const table=document.createElement('table'); table.innerHTML='<thead><tr><th>Name</th><th>Category</th><th>Image path</th></tr></thead>';
+  const tbody=document.createElement('tbody');
+  rows.slice(0,12).forEach(r=>{const tr=document.createElement('tr'); [r.name,r.category,r.image].forEach(v=>{const td=document.createElement('td');td.textContent=String(v);tr.appendChild(td)});tbody.appendChild(tr)});
+  table.appendChild(tbody); preview.appendChild(table);
+  if(rows.length>12){const p=document.createElement('p');p.textContent='Preview में पहले 12 items दिखाए गए हैं; डाउनलोड फाइल में सभी items हैं।';preview.appendChild(p)}
+ } catch(e) { status.textContent='Export नहीं हो पाया: '+(e?.message||e)+'. कृपया इस पेज को अपने GitHub Pages URL से खोलें और Firebase rules/login की अनुमति जाँचें।'; }
+ finally {btn.disabled=false;}
+});
+</script>
+</body></html>
